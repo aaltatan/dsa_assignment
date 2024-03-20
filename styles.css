@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  scroll-margin-top: 2em;
+  scroll-margin-bottom: 0;
+}
+
+
+body {
+  position: relative;
+}
+
+main {
+  width: min(100%, 70ch);
+  margin-inline: auto;
+  padding-inline: 1em;
+  margin-bottom: 2em;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -2px;
+  margin-block: 0.5em;
+}
+
+h2 {
+  margin-block: 2em;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  cursor: zoom-in;
+  margin-block: 2em;
+}
+
+pre {
+  font-family: monospace;
+  background-color: hsl(0, 0%, 97%);
+  padding: 1em;
+  br {
+    padding: 1em;
+  }
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  td[rowspan] {
+    font-weight: bold;
+  }
+  td,
+  th {
+    border: 1px solid hsl(0, 0%, 90%);
+    padding: 0.25em;
+  }
+}
+
+*[data-title] {
+  position: relative;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 1em);
+    transform: translateY(-50%);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    z-index: 1;
+    opacity: 0;
+    transition-duration: 300ms;
+    text-align: center;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.preview {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+
+  img {
+    display: block;
+    width: 80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    color: white;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: bold;
+    transition-duration: 150ms;
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+@media print {
+  .table-of-content {
+    display: none;
+  }
+}
+
+.table-of-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  width: min(100%, 300px);
+  li {
+    padding: 0.25em 1em;
+    &:hover > a {
+      font-weight: bold;
+    }
+  }
+  a {
+    display: block;
+    text-wrap: balance;
+    text-decoration: none;
+    color: black;
+    transition-duration: 150ms;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.font-bold {
+  font-weight: bold;
+}
